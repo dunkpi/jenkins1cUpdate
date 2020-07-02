@@ -13,7 +13,7 @@ package libs
 //
 def lockIBTask(server1c, port1c, infobase, user, passw, action, permCode) {
     utils = new Utils()
-    returnCode = utils.cmd("C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe -file scripts/lock_ib.ps1 -server1c \"${server1c}\" -port1c \"${port1c}\" -infobase \"${infobase}\" -user \"${user}\" -passw \"${passw}\" -action \"${action}\" -permCode \"${permCode}\"")
+    returnCode = utils.cmd("C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy Bypass -file scripts/lock_ib.ps1 -server1c \"${server1c}\" -port1c \"${port1c}\" -infobase \"${infobase}\" -user \"${user}\" -passw \"${passw}\" -action \"${action}\" -permCode \"${permCode}\"")
     if (returnCode != 0) {
         utils.raiseError("Возникла ошибка при изменении возможности запуска РЗ для ${infobase} на ${action}")
     }
@@ -30,7 +30,7 @@ def lockIBTask(server1c, port1c, infobase, user, passw, action, permCode) {
 //
 def kickUsers(server1c, port1c, infobase, user, passw) {
     utils = new Utils()
-    returnCode = utils.cmd("C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe -file scripts/kick_users.ps1 -server1c \"${server1c}\" -port1c \"${port1c}\" -infobase \"${infobase}\" -user \"${user}\" -passw \"${passw}\"")
+    returnCode = utils.cmd("C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy Bypass -file scripts/kick_users.ps1 -server1c \"${server1c}\" -port1c \"${port1c}\" -infobase \"${infobase}\" -user \"${user}\" -passw \"${passw}\"")
     if (returnCode != 0) {
         utils.raiseError("Возникла ошибка при выбрасывании пользователей из  ${infobase}")
     }
@@ -49,7 +49,7 @@ def kickUsers(server1c, port1c, infobase, user, passw) {
 //
 def backupConf(platform1c, server1c, infobase, user, passw, backupDir, permCode) {
     utils = new Utils()
-    returnCode = utils.cmd("C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe -file scripts/backup_conf.ps1 -platform1c \"${platform1c}\" -server1c \"${server1c}\" -infobase \"${infobase}\" -user \"${user}\" -passw \"${passw}\" -backupDir \"${backupDir}\" -permCode \"${permCode}\"")
+    returnCode = utils.cmd("C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy Bypass -file scripts/backup_conf.ps1 -platform1c \"${platform1c}\" -server1c \"${server1c}\" -infobase \"${infobase}\" -user \"${user}\" -passw \"${passw}\" -backupDir \"${backupDir}\" -permCode \"${permCode}\"")
     if (returnCode != 0) {
         utils.raiseError("Возникла ошибка при сохранении конфигурации базы ${infobase}")
     }
@@ -68,7 +68,7 @@ def backupConf(platform1c, server1c, infobase, user, passw, backupDir, permCode)
 //
 def backupIb(platform1c, server1c, infobase, user, passw, backupDir, permCode) {
     utils = new Utils()
-    returnCode = utils.cmd("C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe -file scripts/backup_ib.ps1 -platform1c \"${platform1c}\" -server1c \"${server1c}\" -infobase \"${infobase}\" -user \"${user}\" -passw \"${passw}\" -backupDir \"${backupDir}\" -permCode \"${permCode}\"")
+    returnCode = utils.cmd("C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy Bypass -file scripts/backup_ib.ps1 -platform1c \"${platform1c}\" -server1c \"${server1c}\" -infobase \"${infobase}\" -user \"${user}\" -passw \"${passw}\" -backupDir \"${backupDir}\" -permCode \"${permCode}\"")
     if (returnCode != 0) {
         utils.raiseError("Возникла ошибка при сохранении информационной базы ${infobase}")
     }
@@ -89,7 +89,7 @@ def backupIb(platform1c, server1c, infobase, user, passw, backupDir, permCode) {
 //
 def prepareUpdate(platform1c, repServer1c, repInfobase, repUser, repPassw, repPath, user, passw, backupDir, permCode) {
     utils = new Utils()
-    returnCode = utils.cmd("C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe -file scripts/prepare_update.ps1 -platform1c \"${platform1c}\" -repServer1c \"${repServer1c}\" -repInfobase \"${repInfobase}\" -repUser \"${repUser}\" -repPassw \"${repPassw}\" -repPath \"${repPath}\" -user \"${user}\" -passw \"${passw}\" -backupDir \"${backupDir}\" -permCode \"${permCode}\"")
+    returnCode = utils.cmd("C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy Bypass -file scripts/prepare_update.ps1 -platform1c \"${platform1c}\" -repServer1c \"${repServer1c}\" -repInfobase \"${repInfobase}\" -repUser \"${repUser}\" -repPassw \"${repPassw}\" -repPath \"${repPath}\" -user \"${user}\" -passw \"${passw}\" -backupDir \"${backupDir}\" -permCode \"${permCode}\"")
     if (returnCode != 0) {
         utils.raiseError("Возникла ошибка при создании обновления ${infobase}")
     }
@@ -108,7 +108,7 @@ def prepareUpdate(platform1c, repServer1c, repInfobase, repUser, repPassw, repPa
 //
 def update(platform1c, server1c, infobase, user, passw, backupDir, permCode) {
     utils = new Utils()
-    returnCode = utils.cmd("C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe -file scripts/update.ps1 -platform1c \"${platform1c}\" -server1c \"${server1c}\" -infobase \"${infobase}\" -user \"${user}\" -passw \"${passw}\" -backupDir \"${backupDir}\" -permCode \"${permCode}\"")
+    returnCode = utils.cmd("C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy Bypass -file scripts/update.ps1 -platform1c \"${platform1c}\" -server1c \"${server1c}\" -infobase \"${infobase}\" -user \"${user}\" -passw \"${passw}\" -backupDir \"${backupDir}\" -permCode \"${permCode}\"")
     if (returnCode != 0) {
         utils.raiseError("Возникла ошибка при обновлении информационной базы ${infobase}")
     }
