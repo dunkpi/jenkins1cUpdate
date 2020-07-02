@@ -1,0 +1,20 @@
+{
+    "extends": "recommended",
+    "rules": {
+        "BracesForForLoop": {
+            "enabled": false
+        },
+        "CompileStatic": {
+            "enabled": false
+        },
+        "NestedBlockDepth": {
+            "enabled": false
+        },
+        "SpaceAroundMapEntryColon": {
+            "enabled": false
+        },
+        "UnnecessaryGetter": {
+            "enabled": false
+        }
+    }
+}
