@@ -73,7 +73,7 @@ pipeline {
                             // 5. Создаем файл обновления
                             prepareUpdateTasks["prepareUpdateTask_${infobase}"] = prepareUpdateTask(platform1c, repServer1c, repInfobase, repUser, repPassw, repPath, user, passw, backupDir, permCode)
                             // 6. Обновляем ИБ
-                            updateIBTasks["updateIBTask_${infobase}"] = updateIBTask(platform1c, server1c, infobase, user, paspassws, backupDir, permCode)
+                            updateIBTasks["updateIBTask_${infobase}"] = updateIBTask(platform1c, server1c, infobase, user, passw, backupDir, permCode)
                             // 7. Разблокирум запуск соединений и РЗ
                             unlockIBTasks["unlockIBTask_${infobase}"] = lockIBTask(server1c, port1c, infobase, user, passw, 'unlock', permCode)
                         }
