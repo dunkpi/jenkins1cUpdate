@@ -10,8 +10,8 @@ Param (
 )
 # --- Рабочая часть скрипта ---
 try {
-    $V83Com=New-Object -ComObject 'V83.ComConnector'
-    $ServerAgent = $V83Com.ConnectAgent($server1c + ':$port1c')
+    $V83Com=New-Object -ComObject "V83.ComConnector"
+    $ServerAgent = $V83Com.ConnectAgent($server1c + ":$port1c")
 } catch {
     throw $_.Exception.Message
 }
@@ -19,7 +19,7 @@ $Clusters = $ServerAgent.GetClusters()
 $Cluster = $Clusters[0]
 $ServerAgent.Authenticate($Cluster, $user, $passw)
 $WorkingProcesses = $ServerAgent.GetWorkingProcesses($Cluster);
-$CurrentWorkingProcess = $V83Com.ConnectWorkingProcess('tcp://'+$server1c+':' + $WorkingProcesses[0].MainPort)
+$CurrentWorkingProcess = $V83Com.ConnectWorkingProcess("tcp://"+$server1c+":" + $WorkingProcesses[0].MainPort)
 $CurrentWorkingProcess.AddAuthentication($user, $passw)
 $BaseInfo = $CurrentWorkingProcess.GetInfoBases()
 $baseFound = $false
