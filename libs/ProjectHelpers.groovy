@@ -13,7 +13,7 @@ package libs
 //
 def lockIBTask(server1c, port1c, infobase, user, passw, action, permCode) {
     utils = new Utils()
-    returnCode = utils.cmd("C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe -file ../scripts/drop_db.ps1 -server1c \"${server1c}\" -port1c \"${port1c}\" -infobase \"${infobase}\" -user \"${user}\" -passw \"${passw}\" -action \"${action}\" -permCode \"${permCode}\"")
+    returnCode = utils.cmd("C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe -file ../scripts/lock_ib.ps1 -server1c \"${server1c}\" -port1c \"${port1c}\" -infobase \"${infobase}\" -user \"${user}\" -passw \"${passw}\" -action \"${action}\" -permCode \"${permCode}\"")
     if (returnCode != 0) {
         utils.raiseError("Возникла ошибка при изменении возможности запуска РЗ для ${infobase} на ${action}")
     }
@@ -108,7 +108,7 @@ def prepareUpdate(platform1c, repServer1c, repInfobase, repUser, repPassw, repPa
 //
 def update(platform1c, server1c, infobase, user, passw, backupDir, permCode) {
     utils = new Utils()
-    returnCode = utils.cmd("C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe -file ../scripts/prepare_update.ps1 -platform1c \"${platform1c}\" -server1c \"${server1c}\" -infobase \"${infobase}\" -user \"${user}\" -passw \"${passw}\" -backupDir \"${backupDir}\" -permCode \"${permCode}\"")
+    returnCode = utils.cmd("C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe -file ../scripts/update.ps1 -platform1c \"${platform1c}\" -server1c \"${server1c}\" -infobase \"${infobase}\" -user \"${user}\" -passw \"${passw}\" -backupDir \"${backupDir}\" -permCode \"${permCode}\"")
     if (returnCode != 0) {
         utils.raiseError("Возникла ошибка при обновлении информационной базы ${infobase}")
     }
