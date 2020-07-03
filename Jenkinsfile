@@ -80,13 +80,13 @@ pipeline {
                             // 8. Запустим 1С Предприяие
                             start1cTasks["unlockIBTask_${infobase}"] = start1c(platform1c,server1c, infobase, user, passw)
                         }
-                        // parallel lockIBTasks
-                        // parallel kickUsersTasks
-                        // parallel backupConfTasks
-                        // parallel backupIbTasks
-                        // parallel prepareUpdateTasks
-                        // parallel updateIBTasks
-                        // parallel unlockIBTasks
+                        parallel lockIBTasks
+                        parallel kickUsersTasks
+                        parallel backupConfTasks
+                        parallel backupIbTasks
+                        parallel prepareUpdateTasks
+                        parallel updateIBTasks
+                        parallel unlockIBTasks
                         parallel start1cTasks
                     }
                 }
