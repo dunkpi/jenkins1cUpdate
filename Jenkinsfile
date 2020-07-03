@@ -168,7 +168,7 @@ def updateIBTask(platform1c, server1c, infobase, user, passw, backupDir, permCod
     }
 }
 
-def updateIBTask(platform1c,server1c, infobase, user, passw) {
+def start1c(platform1c,server1c, infobase, user, passw) {
     return {
         stage("Запуск 1С Предприятие ${infobase}") {
             timestamps {
