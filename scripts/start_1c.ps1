@@ -10,7 +10,8 @@ Param (
 )
 # --- Рабочая часть скрипта ---
 try {
-    $connectionString ='ENTERPRISE /S' + $server1c + '\' + $infobase + ' /N' + $user + ' /P' + $passw + ' /Execute "tools\quit1c.epf'
+    $connectionString ='ENTERPRISE /S' + $server1c + '\' + $infobase + ' /N' + $user + ' /P' + $passw + ' /Execute "tools\\quit1c.epf'
+    Write-Host $connectionString
     & $platform1c $connectionString | Out-Null
 } catch {
     throw $_.Exception.Message
