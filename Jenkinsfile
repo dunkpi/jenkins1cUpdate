@@ -11,6 +11,7 @@ def backupIbTasks = [:]
 def prepareUpdateTasks = [:]
 def updateIBTasks = [:]
 def unlockIBTasks = [:]
+def start1cTasks = [:]
 
 pipeline {
     parameters {
@@ -76,14 +77,17 @@ pipeline {
                             updateIBTasks["updateIBTask_${infobase}"] = updateIBTask(platform1c, server1c, infobase, user, passw, backupDir, permCode)
                             // 7. Разблокирум запуск соединений и РЗ
                             unlockIBTasks["unlockIBTask_${infobase}"] = lockIBTask(server1c, port1c, infobase, user, passw, 'unlock', permCode)
+                            // 8. Запустим 1С Предприяие
+                            start1cTasks["unlockIBTask_${infobase}"] = start1c(platform1c,server1c, infobase, user, passw)
                         }
-                        parallel lockIBTasks
-                        parallel kickUsersTasks
-                        parallel backupConfTasks
-                        parallel backupIbTasks
-                        parallel prepareUpdateTasks
-                        parallel updateIBTasks
-                        parallel unlockIBTasks
+                        // parallel lockIBTasks
+                        // parallel kickUsersTasks
+                        // parallel backupConfTasks
+                        // parallel backupIbTasks
+                        // parallel prepareUpdateTasks
+                        // parallel updateIBTasks
+                        // parallel unlockIBTasks
+                        parallel start1cTasks
                     }
                 }
             }
@@ -159,6 +163,17 @@ def updateIBTask(platform1c, server1c, infobase, user, passw, backupDir, permCod
             timestamps {
                 def projectHelpers = new ProjectHelpers()
                 projectHelpers.update(platform1c, server1c, infobase, user, passw, backupDir, permCode)
+            }
+        }
+    }
+}
+
+def updateIBTask(platform1c,server1c, infobase, user, passw) {
+    return {
+        stage("Запуск 1С Предприятие ${infobase}") {
+            timestamps {
+                def projectHelpers = new ProjectHelpers()
+                projectHelpers.start1c(platform1c,server1c, infobase, user, passw)
             }
         }
     }
